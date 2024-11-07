@@ -9,6 +9,7 @@
 #include <QStandardItemModel>
 #include <QMessageBox>
 #include <QPushButton>
+#include <QHeaderView>
 #include "tabledata.h"
 #include "sqlprocesshandler.h"
 

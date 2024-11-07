@@ -63,6 +63,13 @@ void ScriptWidget::setupUI()
     // 3. 创建表格视图
     resultView = new QTableView(this);
     resultView->setMinimumSize(1500, 500);
+    resultView->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);  // 水平滚动
+    resultView->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);    // 垂直滚动
+    resultView->horizontalHeader()->setStretchLastSection(false);            // 不拉伸最后一列
+    resultView->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive); // 允许调整列宽
+    resultView->verticalHeader()->setSectionResizeMode(QHeaderView::Interactive);   // 允许调整行高
+    resultView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);          // 需要时显示垂直滚动条
+    resultView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);        // 需要时显示水平滚动条
     mainLayout->addWidget(resultView);
     
     // 设置窗口属性
@@ -121,12 +128,18 @@ void ScriptWidget::onDataReceived(const QByteArray& data)
     // 设置状态和息
     tableData.setStatus(jsonObj["status"].toInt());
     tableData.setMsg(jsonObj["msg"].toString());
-    
-    // 添加列信息
+
     QJsonObject columns = jsonObj["columns"].toObject();
-    if (columns.isEmpty()) {
-        QMessageBox::warning(this, "错误", "未找到列信息");
+    if(tableData.getStatus() != 0) {
+        QMessageBox::warning(this, "错误", tableData.getMsg());
         return;
+    }else{
+        // 成功
+        
+        if(columns.isEmpty()){
+            QMessageBox::information(this, "提示", tableData.getMsg());
+            return;
+        }
     }
 
     for (auto it = columns.begin(); it != columns.end(); ++it) {

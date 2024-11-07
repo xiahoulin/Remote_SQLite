@@ -13,6 +13,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QHeaderView>
 #include "sqlprocesshandler.h"
 #include "tabledata.h"
 

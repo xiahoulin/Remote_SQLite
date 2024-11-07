@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     setWindowIcon(QIcon(":/pics/icons/sqlite.png"));
     setWindowTitle("SQLite远程连接器");
-    setMinimumSize(1600, 1000);
+    setMinimumSize(1600, 1200);
 
     scriptWidget = nullptr;
     findTableWidget = nullptr;

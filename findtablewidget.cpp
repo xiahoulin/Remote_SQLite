@@ -48,6 +48,13 @@ void FindTableWidget::setupUI()
     resultView = new QTableView(this);
     resultView->setModel(tableModel);
     resultView->setMinimumWidth(800);
+    resultView->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);  // 水平滚动
+    resultView->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);    // 垂直滚动
+    resultView->horizontalHeader()->setStretchLastSection(false);            // 不拉伸最后一列
+    resultView->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive); // 允许调整列宽
+    resultView->verticalHeader()->setSectionResizeMode(QHeaderView::Interactive);   // 允许调整行高
+    resultView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);          // 需要时显示垂直滚动条
+    resultView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);        // 需要时显示水平滚动条
     resultView->setEditTriggers(QAbstractItemView::DoubleClicked | 
                                QAbstractItemView::EditKeyPressed);
     mainLayout->addWidget(resultView);

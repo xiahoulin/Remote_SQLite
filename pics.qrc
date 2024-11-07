@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/icons"/>
+    <qresource prefix="/">
+        <file>pics/icons/docs.png</file>
+        <file>pics/icons/exec.png</file>
+        <file>pics/icons/functions.png</file>
+        <file>pics/icons/help.png</file>
+        <file>pics/icons/link.png</file>
+        <file>pics/icons/query.png</file>
+        <file>pics/icons/save.png</file>
+        <file>pics/icons/selfdef.png</file>
+        <file>pics/icons/sqlite.png</file>
+        <file>pics/icons/vedio.png</file>
+        <file>pics/icons/setting.png</file>
+        <file>pics/icons/disconnect.png</file>
+    </qresource>
+</RCC>
